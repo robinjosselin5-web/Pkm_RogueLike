@@ -1,32 +1,11 @@
-import { useState } from "react";
-
+import { Outlet } from "react-router";
 import "./App.css";
 
-// page components
-
-import Home from "./pages/Home";
-import About from "./pages/About";
-
-// the App
-
 function App() {
-  const [currentLocation, setCurrentLocation] = useState("/");
-
   return (
-    <>
-      <nav>
-        <button onClick={() => setCurrentLocation("/")} type="button">
-          Home
-        </button>
-        <button onClick={() => setCurrentLocation("/about")} type="button">
-          About
-        </button>
-      </nav>
-      <main>
-        {currentLocation === "/" && <Home />}
-        {currentLocation === "/about" && <About />}
-      </main>
-    </>
+    <main className="bg-base-100 drawer mx-auto max-w-[100rem] lg:drawer-open h-screen flex justify-center items-center">
+      <Outlet />
+    </main>
   );
 }
 

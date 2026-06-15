@@ -1,50 +1,41 @@
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, Link, RouterProvider } from "react-router";
+import { createBrowserRouter, RouterProvider } from "react-router";
+import { useState } from "react";
 
-// page components
-
+import App from "./App";
 import Home from "./pages/Home";
-import About from "./pages/About";
-
-// router creation
+import Selection from "./pages/Selection";
+import UserContext from "./contexts/UserContext";
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: (
-      <>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-        </nav>
-        <main>
-          <Home />
-        </main>
-      </>
-    ),
-  },
-  {
-    path: "/about",
-    element: (
-      <>
-        <nav>
-          <Link to="/">Home</Link>
-          <Link to="/about">About</Link>
-        </nav>
-        <main>
-          <About />
-        </main>
-      </>
-    ),
+    element: <App />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/Selection",
+        element: <Selection />,
+      },
+    ],
   },
 ]);
 
-// rendering
+// Wrapper component to hold the state
+function Root() {
+  const [user, setUser] = useState({ name: "" });
+
+  return (
+    <UserContext.Provider value={{ user, setUser }}>
+      <RouterProvider router={router} />
+    </UserContext.Provider>
+  );
+}
 
 const rootElement = document.getElementById("root");
 
 if (rootElement != null) {
-  ReactDOM.createRoot(rootElement).render(
-    <RouterProvider router={router} />
-  );
+  ReactDOM.createRoot(rootElement).render(<Root />);
 }

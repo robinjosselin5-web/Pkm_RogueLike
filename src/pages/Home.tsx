@@ -1,5 +1,7 @@
+import FormUserName from "../components/FormUserName";
+
 function Home() {
-  return <h1>Hello from Home</h1>;
+  return <FormUserName />;
 }
 
 export default Home;
