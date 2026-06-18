@@ -3,7 +3,7 @@ import "./App.css";
 
 function App() {
   return (
-    <main className="bg-base-100 drawer mx-auto max-w-[100rem] lg:drawer-open h-screen flex justify-center items-center">
+    <main className="bg-base-100 drawer mx-auto w-full lg:drawer-open h-screen flex justify-center items-center">
       <Outlet />
     </main>
   );

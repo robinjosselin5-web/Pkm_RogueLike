@@ -7,7 +7,7 @@ function FormUserName() {
     const navigate = useNavigate();
     const [inputUser, setInputUser] = useState('');
     const { user, setUser } = useContext(UserContext);
-
+ 
     function handleSubmit(e: any) {
         // Empêche le navigateur de recharger la page
         e.preventDefault();
@@ -34,7 +34,7 @@ function FormUserName() {
                         setInputUser(e.target.value);
                     }}
                 />
-                <button className="btn btn-primary mt-4" type='submit'>Go !</button>
+                <button className="btn btn-error mt-4" type='submit'>Go !</button>
             </form>
         </article>
     );
